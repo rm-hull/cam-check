@@ -7,7 +7,7 @@ I have 4.5Tb of unwatched video footage from the garden wildlife camera.
 
 ## Starting
 
-1. Install dependencies with [pipenv]():
+1. Install dependencies with [pipenv](https://pipenv.pypa.io/en/latest/):
 
 ```console
 $ pipenv install
