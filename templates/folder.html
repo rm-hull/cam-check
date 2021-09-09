@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+  <ul>
+    <li>
+      <a href="/{{ parent or ''}}">Up to {{ parent or 'root' }}</a>
+    </li>
+  </ul>
+{% endblock %}
+
+{% block header %}
+<h1>{% block title %}Folder: {{ path }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<ul>
+  {% for video in videos %}
+  <li><a href="{{ video }}">{{ video }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

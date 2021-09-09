@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+  <ul>
+    <li>
+      <a href="{{ prev }}" class="disabled">Delete</a>
+    </li>
+    <li>
+      <a href="{{ prev }}" class='{{ "disabled" if not prev }}' >&lt; Previous</a>
+    </li>
+    <li>
+      <a href="{{ next }}" class='{{ "disabled" if not next }}' >Next &gt;</a>
+    </li>
+    <li>
+      <a href="/{{ parent }}">Up to {{ parent }}</a>
+    </li> 
+  </ul>
+{% endblock %}
+
+{% block header %}
+    <h1>{% block title %}File {{ index }} of {{ count }} - {{ parent }} {{ time }}{% endblock %}</h1>
+    <code>{{ parent }}/{{ file }}</code>
+{% endblock %}
+
+{% block content %}
+<video controls autoplay width="100%">
+  <source src="/static/data/{{ parent }}/{{ file }}" type="video/mp4">
+  Sorry, your browser doesn't support embedded videos.
+</video>
+{% endblock %}
