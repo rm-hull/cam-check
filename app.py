@@ -1,6 +1,5 @@
 from typing import List
-from flask import Flask
-from flask import render_template
+from flask import Flask, request, render_template, redirect
 import os
 from pathlib import Path
 
@@ -41,3 +40,21 @@ def folder(path: str = ''):
                            path=path,
                            parent=None if str(parent) == '.' else parent,
                            videos=get_videos(path))
+
+
+@app.route('/delete-file', methods=['POST'])
+def delete_file():
+    file = request.form['file']
+    path = os.path.join("static/data", file)
+    basename = os.path.basename(path)
+    
+    parent = Path(file).parent
+    videos = get_videos(parent)
+    index = videos.index(basename)
+    count = len(videos)
+    next = videos[index + 1] if index + 1 < count else None
+    
+    print(f"Deleting file: {path}")
+    os.rename(path, f"static/data/trash/{basename}")
+    
+    return redirect(f'/{parent}/{next}' if next else f'/{parent}', code=302)
