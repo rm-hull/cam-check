@@ -15,7 +15,11 @@
 {% block content %}
 <ul>
   {% for video in videos %}
-  <li><a href="{{ video }}">{{ video }}</a></li>
+  <li class="file-info">
+    <a href="{{ video['filename'] }}">{{ video['filename'] }}</a>
+    <span>{{ video['stat'].st_size|filesizeformat }}</span>      
+    <span>{{ video['stat'].st_ctime|ctime }}</span>      
+  </li>
   {% endfor %}
 </ul>
 {% endblock %}

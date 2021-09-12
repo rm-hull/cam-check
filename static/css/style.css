@@ -137,3 +137,14 @@ a.disabled {
   pointer-events: none;
   color: #aaa;
 }
+
+.file-info {
+  padding: 2px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.file-info:hover {
+  background: #eee
+}
